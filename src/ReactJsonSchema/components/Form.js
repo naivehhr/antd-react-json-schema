@@ -241,7 +241,7 @@ class _Form extends Component {
       if (Object.keys(_errors).length == 0) {
         const { schema, formData } = this.state
         formatAmountValue(schema, formData)
-        // console.log('nnnn formData', formData)
+        console.log('formData', formData)
         // return
         this.props.onSubmit && this.props.onSubmit(formData, (data) => {
           // console.log('callback', data)
