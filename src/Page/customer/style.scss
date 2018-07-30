@@ -1,0 +1,24 @@
+.form {
+	position: relative;
+
+	.btn {
+		position: absolute;
+		top: -5px;
+		right: -15px;
+	}
+}
+
+
+.list {
+	.search {
+		margin-top: 20px;
+	}
+}
+
+
+.info {
+	width: 600px;
+	padding: 16px;
+	padding-bottom: 0px;
+	border: 1px solid #ecdddd;
+}

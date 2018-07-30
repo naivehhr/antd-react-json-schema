@@ -1,0 +1,166 @@
+.login-page-container{
+	width:100%;
+	min-height:100vh;
+	// min-height:60vh;
+	// background:linear-gradient(left top,#242833 0%,#212530 100%);
+	// background:-webkit-linear-gradient(left top,#242833 0%,#212530 100%);
+	background:linear-gradient(left top,#242833 0%,#242833 50%,#212530 50%,#212530 100%);
+	background:-ms-linear-gradient(left top,#242833 0%,#242833 50%,#212530 50%,#212530 100%);
+	// display:flex;
+	// flex-direction:column;
+	// justify-content:space-between;
+	.login-page-container-inner{
+		width:1200px;
+		margin:0 auto;
+		height:60%;
+		display:flex;
+		justify-content:center;
+		align-items:flex-start;
+		box-sizing:border-box;
+		padding-top:45px;
+		padding-bottom:25px;
+		.left-intro{
+			width:60%;
+			.fengshou-logo{
+				display:flex;
+				align-items:center;
+				padding-bottom:35px;
+				position:relative;
+				&:after{
+					content: '';
+    				position: absolute;
+    				height: 1px;
+    				width: 100%;
+    				background: linear-gradient(to right,rgba(255,255,255,.15),rgba(255,255,255,0));
+    				bottom: 0;
+    				left: 0;
+				}
+				img{
+					height:56px;
+					display:block;
+				}
+				.logo-title{
+					color:#ffffff;
+					line-height:80px;
+					margin-left:10px;
+					font-size:32px;
+				}
+			}
+			.intro{
+				padding-left:60px;
+				.intro-title{
+					color:#ffffff;
+					padding-top:30px;
+					font-size:28px;
+				}
+				.child-line{
+					color:#ffffff;
+					font-size:14px;
+					line-height:15px;
+					margin-top:18px;
+					padding-left:50px;
+					position:relative;
+					&:before{
+						content:'';
+						width:5px;
+						height:5px;
+						border-radius:50%;
+						background-color:#ffffff;
+						position:absolute;
+						left:30px;
+						top:6px;
+					}
+				}
+			}
+		}
+		.right-form-container{	
+			width:40%;
+			margin-top:65px;
+			.form-inner{
+				width:90%;
+				margin:0 auto;
+				background-color:#fff;
+				border-radius:4px;
+				.form-title{
+					padding-top:25px;
+					font-size:28px;
+					font-weight:400;
+					color:#333;
+					text-align:center;
+				}
+				.login-form-body{
+					padding-top:25px;
+					padding-bottom:45px;
+					display:flex;
+					flex-direction:column;
+					align-items:center;
+					input{
+						width:310px;
+						height:40px;
+						margin-bottom:20px;
+						border-radius:2px !important;
+						font-size:14px;
+						color:#333 !important;
+					}
+					button{
+						display:block;
+						width:310px;
+						height:40px;		
+						font-size:14px;			
+						transition:0s !important;
+					}
+					.vcodeline {
+						vertical-align: middle;
+						line-height: 40px;
+						width: 310px;
+						text-align: left;
+						.vcodeinput {
+							width: 180px;
+						}
+						.vcodebtn {
+							margin-top: 1px;
+							height: 40px;
+							margin-left: 10px;
+							width: 120px;
+							display: inline-block;
+						}
+						.vcodebtn[disabled] {
+							color: rgba(0, 0, 0, 0.25);
+							background-color: #f7f7f7;
+							border-color: #d9d9d9;
+						}
+					}
+				}
+				.TIP{
+					color:#999;
+					margin:0 auto;
+					width:310px;
+					height:40px;
+					border-top:1px solid #e0dcdc;
+					text-align:center;
+					font-size:14px;
+					line-height:40px;
+				}
+				.reg-button{
+					height:40px;
+					width:310px;
+					margin:0 auto;
+					border:1px solid #00a2ff;
+					padding-bottom:25px;
+				}
+			}
+		}
+	}
+	.footer{
+		position: absolute;
+		bottom: 0px;
+		width:100%;
+		height:80px;
+		margin-bottom:5px;
+		border-top:1px solid rgba(255,255,255,0.15);
+		color:#ffffff;
+		font-size:14px;
+		text-align:center;
+		line-height:80px;
+	}
+}

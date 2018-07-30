@@ -1,0 +1,22 @@
+.layoutpanel_horizontal {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+}
+.layoutpanel_horizontal > .lypanel {
+	margin-left: 10px;
+}
+.layoutpanel_horizontal > .lypanel:first-child{
+	margin-left: 0px;
+}
+.layoutpanel_vertical {
+    width: 100%;
+	overflow:hidden;
+}
+.layoutpanel_vertical > .lypanel {
+	margin-top: 10px;
+}
+.layoutpanel_vertical > .lypanel:first-child{
+	margin-top: 0px;
+}
+.lypanel {}

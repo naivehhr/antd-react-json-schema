@@ -1,0 +1,15 @@
+.DS_Store
+node_modules
+/manifest.json
+/manifest.dev.json
+dist
+dev
+ver
+*.orig
+/*.sh
+gerrit
+/.dev
+/*.log
+.history
+/nohup.out
+.vscode

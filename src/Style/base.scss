@@ -1,0 +1,91 @@
+body,
+html {
+    height: 100%;
+    background-color: #f1f2f7;
+    min-width: 1200px;
+}
+html{
+    // overflow-y: scroll;
+}
+
+#app {
+    position: relative;
+    min-height: 100%;
+}
+
+fieldset {
+    border: none;
+}
+
+.loading {
+    text-align: center;
+    height: 480px;
+    line-height: 480px;
+}
+
+.aside {
+    width: 15%;
+    position: absolute;
+    top: 56px;
+    bottom: 0;
+    background-color: white;
+    // box-shadow: 0px 1px 1px #eee;
+    .ant-menu-item:hover,
+    .ant-menu-item-active,
+    .ant-menu-submenu-title:hover {
+        color: #1abc9c
+    }
+
+    .ant-layout-sider-trigger{
+        background: white;
+        color: #6B6262;
+    }
+
+    .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+        color: #1abc9c;
+        background-color: transparent;
+    }
+    
+}
+
+
+.content {
+    width: 85%;
+}
+
+.container {
+    .ant-breadcrumb{
+        margin-bottom:15px;
+    }
+    width: 85%;
+    padding: 20px;
+    margin-left: 15%;
+    margin-bottom: 60px;
+}
+
+
+/*table*/
+
+.ant-table-content {
+    background-color: #ffffff;
+}
+
+.ant-table-row:nth-child(even) {
+    background-color: #f9f9f9
+}
+
+
+// 给全局的ant-select加宽度
+.ant-select,
+.ant-cascader-picker {
+    width: 100%;
+}
+
+.ant-select:only-child,
+.ant-cascader-picker:only-child {
+    display: block;
+}
+
+.ant-input-number {
+    width: 100%;
+}

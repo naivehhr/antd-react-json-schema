@@ -1,0 +1,50 @@
+.collpase-panel-container{
+    box-sizing: border-box;
+    padding: 20px;
+    .ant-collapse > .ant-collapse-item{
+        border-bottom: none;
+    }
+    .ant-collapse-header{
+        font-weight: bold;
+        color: #666666 !important;
+    }
+    .ant-collapse-borderless > .ant-collapse-item > .ant-collapse-content{
+        border-top:none;
+        .single-title{
+            font-size: 14px;
+            color: #868686;
+        }
+        .single-content{
+            font-size: 14px;
+            color: #666666;
+        }
+    }
+    .ant-collapse-header{
+        position: relative;
+        padding-left: 15px !important;
+        i{
+            font-size: 25px !important;
+            left: 97% !important;
+        }
+    }
+    .ant-collapse-borderless > .ant-collapse-item > .ant-collapse-header{
+        background-color: #f6f8fa !important;
+        padding-top:10px;
+        padding-bottom:10px
+    }
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header .arrow{
+        transform: scale(0.75) rotate(180deg)
+    }
+    .ant-collapse .ant-collapse-item-disabled > .ant-collapse-header > .arrow{
+        display: none !important;
+    }
+    .ant-row{
+        &>div{
+            height: 45px;
+            line-height: 45px;
+        }
+    }
+    .ant-collapse-content-box{
+        padding: 0 !important;
+    }
+}

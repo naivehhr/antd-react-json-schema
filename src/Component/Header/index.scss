@@ -1,0 +1,37 @@
+.ant-layout-header {
+
+    .logo{
+        width: 15%;
+        height: 100%;
+        background: #1abc9c;
+        float: left;
+        position: relative;
+        font-size:18px;
+        color:white;
+        text-align: center;
+        &::before{
+            /*content:'供应链管理平台';*/
+            white-space: nowrap;
+            font-size:18px;
+            color:white;
+            position: absolute;
+            letter-spacing: 5px;
+            top:0;
+            left:50%;
+            transform: translateX(-50%)
+        }
+    }
+
+    .title {
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        color: #404040!important;
+        font-size: 18px;
+        margin-right: 50px;
+    }
+
+    .right {
+        float: right;
+    }
+}

@@ -1,0 +1,34 @@
+.tab-view-display-layout{
+    .title{
+		font-weight: bold;
+		font-size: 16px;
+		padding: 10px 0;
+	}
+
+	.des{
+		padding-bottom: 10px;
+	}
+
+	table {
+		width: 100%;
+		background-color: #FFFFFF;
+		border-collapse: collapse;
+    	border-spacing: 0;
+	}
+	td {
+		border: 1px solid #ebedf0;
+		padding: 8px 12px;
+	}
+	td.tlname {
+		width: 15%;
+	}
+	.tablecol1 {
+		.tlval {width: 85%;}
+	}
+	.tablecol2 {
+		.tlval {width: 35%;}
+	}
+	.tablecol3 {
+		.tlval {width: 18.666%;}
+	}
+}

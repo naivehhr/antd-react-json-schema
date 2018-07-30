@@ -1,0 +1,89 @@
+.go-diagram {
+    #myFlexDiv {
+        display: -webkit-flex;
+        display: flex;
+        width: 100%;
+        height: 700px;
+    }
+
+    #myPODiv {
+        display: -webkit-flex;
+        display: flex;
+    }
+
+    #myPaletteDiv canvas,#myDiagramDiv canvas{
+        outline: none;
+    }
+
+    @media (min-width: 768px) {
+        #myFlexDiv {
+            flex-flow: row;
+        }
+        #myPODiv {
+            width: 105px;
+            height: 100%;
+            border-right:1px solid #eee;
+            flex-flow: column;
+        }
+        #myPaletteDiv {
+            height: 100%;
+        }
+        #myOverviewDiv {
+            margin-top: 3px;
+            flex: 1;
+        }
+        #myDiagramDiv {
+            flex: 1;
+        }
+    }
+
+    @media (max-width: 767px) {
+        #myFlexDiv {
+            flex-flow: column;
+            align-items: center;
+        }
+        #myPODiv {
+            width: 90%;
+            height: 105px;
+            margin-bottom: 10px;
+            flex-flow: row;
+        }
+        #myPaletteDiv {
+            width: 75%;
+        }
+        #myOverviewDiv {
+            margin-left: 3px;
+            flex: 1;
+        }
+        #myDiagramDiv {
+            width: 90%;
+            flex: 1;
+        }
+    }
+
+    .selected-tip {
+        position: absolute;
+        bottom: 15px;
+    }
+    .loading{
+        text-align: center;
+        height: 240px;
+        line-height: 240px;
+    }
+    .ant-radio-group {
+        width:100%;
+    }
+    .ant-radio-wrapper {
+        width: 45%;
+        line-height: 1.5;
+        white-space: nowrap;
+        &>span:not(:first-child) {
+            width: 100%;
+            text-overflow: ellipsis;
+            line-height: 1;
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+    }
+}

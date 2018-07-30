@@ -1,0 +1,36 @@
+.branch-select-table {
+    .input-field {
+        vertical-align: top;
+    }
+}
+
+.multi-branch-select {
+    .selected-tip {
+        position: absolute;
+        bottom: 15px;
+    }
+    .loading {
+        text-align: center;
+        height: 240px;
+        line-height: 240px;
+    }
+    .ant-checkbox-group {
+        width: 100%;
+    }
+    .ant-checkbox-wrapper {
+        width: 45%;
+        line-height: 1.5;
+        white-space: nowrap;
+        &:hover {
+            background-color: #fbfbfb;
+        }
+        &>span:not(:first-child) {
+            width: 100%;
+            text-overflow: ellipsis;
+            line-height: 1;
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+    }
+}

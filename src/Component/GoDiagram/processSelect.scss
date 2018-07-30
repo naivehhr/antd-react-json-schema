@@ -1,0 +1,27 @@
+.process-select {
+    .selected-tip {
+        position: absolute;
+        bottom: 15px;
+    }
+    .loading{
+        text-align: center;
+        height: 240px;
+        line-height: 240px;
+    }
+    .ant-radio-group {
+        width:100%;
+    }
+    .ant-radio-wrapper {
+        width: 45%;
+        line-height: 1.5;
+        white-space: nowrap;
+        &>span:not(:first-child) {
+            width: 100%;
+            text-overflow: ellipsis;
+            line-height: 1;
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.success-page{
+    width: 1208px;
+    height: 500px;
+    margin: 40px auto;
+    background-color: white;
+    &>div{
+        width: 500px;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.correct-img{
+    width: 40px;
+}
+.success-page-button{
+    width: 150px;
+    height: 40px;
+    background-color: rgba(45, 183, 245, 1);
+    border-radius: 5px;
+    color: white;
+    line-height: 40px;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(228, 228, 228, 1);
+}
+.success-title{
+    font-size: 16px;
+}
+.success-description{
+    font-size: 14px;
+}
+.correct-img,.success-page-button,.success-title,.success-description{
+    margin-bottom: 15px;
+}

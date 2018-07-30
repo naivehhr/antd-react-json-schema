@@ -1,0 +1,67 @@
+
+.info-container {
+	
+	.info-content {
+		display: flex;
+		padding-top: 10px;
+		
+
+		.left-info {
+			display: flex;
+			width: 60%;
+			flex-direction: column;
+			min-width: 400px;
+			padding-bottom: 0px;
+		}
+
+		.right-info {
+			display: flex;
+			width: 40%;
+			flex-direction: column;
+			min-width: 400px;
+			margin-left: 50px;
+
+			.credit {
+			}
+
+			.fund-track{
+				color: rgba(0,0,0,.65);
+				font-size: 15px;
+				margin-top: 20px;
+				border: 1px solid #ecdddd;
+				padding: 16px 26px;
+				background-color: white;
+
+				.timeline {
+					margin-top: 20px;
+					
+					.timeline-content {
+						font-size: 14px;
+						display: flex;
+						justify-content: space-between;
+					}
+
+					span {
+						margin-top: 5px;
+						font-weight: normal;
+					}
+				}
+			}
+		}
+	}
+
+	.btn {
+		position: absolute;
+		top: -15px;
+		right: -10px;
+	}
+
+	
+
+	// .info {
+	// 	width: 600px;
+	// 	padding: 16px;
+	// 	padding-bottom: 0px;
+	// 	border: 1px solid #ecdddd;
+	// }
+}

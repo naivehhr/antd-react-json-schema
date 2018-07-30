@@ -1,0 +1,45 @@
+.dt-layout-container {
+	// background-color: red;
+	border: 1px solid  rgb(213, 213, 213);;
+	margin-bottom: 20px;
+	
+	.dt-layout-header {
+    display: flex;
+    align-items: center;
+		height: 50px;
+		padding-left: 20px;
+		background-color: #f6f8fa;
+		
+		span {
+			font-size: 12px;
+			font-weight: 500
+		}
+	}
+	
+	.dt-layout-content {
+		display: flex;
+		flex-direction: column;
+
+		.dt-layout-content-group {
+			display: flex;
+			align-items: center;
+			padding-left: 10px;
+			height: 50px;
+			border-top: 1px dashed #e8e8e8;
+			&:first-child{
+				border-top:none
+			}
+			.dt-layout-content-group-item {
+				display: flex;
+				width: 30%;
+				margin-right: 40px;
+			}
+		}
+	}
+	.empty-list{
+		height:50px;
+		line-height:50px;
+		text-align:center;
+		font-size:13px;
+	}
+}

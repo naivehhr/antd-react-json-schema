@@ -1,0 +1,31 @@
+.roleaccesstable {
+	width: 100%;
+	border-spacing: 0;
+	margin: 10px 0px;
+	td,th{
+		padding:10px;
+		border:1px solid #DDDDDD;
+	}
+	.col1{
+		width: 150px;
+		text-align:left;
+	}
+	.col2{
+		text-align:left;
+	}
+	.col3{
+		width: 150px;
+		text-align:center;
+	}
+	thead{
+		background:#f2f4f5;
+	}
+	tbody{
+		tr:nth-child(odd) {
+			background:#FFFFFF;
+		}
+		tr:nth-child(even) {
+			background:#f2f4f5;
+		}
+	}
+}

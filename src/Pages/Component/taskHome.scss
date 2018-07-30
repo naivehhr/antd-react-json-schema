@@ -1,0 +1,37 @@
+.task-home{
+    .dt-layout-container{
+        border-color: #edecec;
+    }
+    .dt-layout-content-group{
+        transition: .3s;
+    }
+    .dt-layout-content-group:hover{
+        background-color: #ecf6fd;
+    }
+}
+
+.task-home-panels{
+    overflow: hidden;
+    margin-left: -10px;
+    .taskpanel {
+        float: left;
+        display: inline-block;
+        width: 240px;
+        padding: 15px;
+        margin: 10px;
+        background-color: #f2f2f2;
+        cursor: pointer;
+        .tasktitle {
+            font-size: 12px;
+            color: rgb(143, 146, 151);
+            margin-bottom: 10px;
+        }
+        .tasklink {
+            font-size: 36px;
+            color: #8f9297;
+        }
+    }
+    .taskpanel:hover {
+        background-color: rgb(229,229,229);
+    }
+}

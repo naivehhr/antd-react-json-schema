@@ -1,0 +1,24 @@
+.tab-view-layout-display{
+    margin-top:10px;
+    // border: 1px solid rgba(242,242,242,1);
+    .tab-view-body{
+        border: 1px solid rgba(242,242,242,1);        
+    }
+    .ant-tabs-nav-scroll{
+        background: rgba(242, 242, 242, 1);
+    }
+    .title-field-level-one{
+        display: none;
+    }
+    .antd-form-sub-btn{
+        display: none;
+    }
+    .schemaform .ant-row.ant-form-item.ant-form-item-no-colon.form-item{
+        height: 45px;
+    }
+    .tab-view-title{
+        font-weight: bold;
+        font-size: 16px;
+        padding: 10px 0;
+    }
+}

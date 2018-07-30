@@ -1,0 +1,52 @@
+.form {
+	position: relative;
+
+	legend{
+		font-size: 16px;
+	}
+
+	.sub-btn {
+		position: absolute;
+		top: -10px;
+		right: 0px;
+	}
+}
+
+.contain {
+	padding:10px 0;
+	.ant-collapse {
+		.display {
+			font-size: 14px;
+			.field {
+				display: flex;
+				flex-direction: row;
+				font-size: 14px;
+				margin: 10px;
+		
+				.name {
+					display: flex;
+					flex-grow: 1;
+				}
+		
+				.value {
+					display: flex;
+					flex-grow: 2;
+					justify-content: flex-end;
+				}
+			}
+		}
+		.ant-collapse-item {
+			.ant-collapse-header{
+				.arrow{
+					background-color: rgba(0, 0, 0, 0);
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+//className="display" 

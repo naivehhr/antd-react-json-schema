@@ -1,0 +1,21 @@
+.mybtn-group {
+	// float: right;
+	text-align: end;
+	
+	.mybtn-group-btn {
+		margin: 10px;
+	}
+	
+}
+
+.myInput {
+
+	input {
+		border-color: red;
+		transition: border-color ease-in-out .5s,box-shadow ease-in-out .5s
+		
+	}
+
+	
+}
+

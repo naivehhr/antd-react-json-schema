@@ -1,0 +1,117 @@
+.antd-form {
+  background-color: #ffffff;
+  padding: 20px;
+}
+.antd-form > div > .layout-wrapper > div > .title-field-level-one {
+  height: 25px;
+  line-height: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper {
+  border: 1px solid #f2f2f2;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > div > .title-field-level-one {
+  line-height: 50px;
+  background-color: #f2f2f2;
+  padding-left: 20px;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div {
+  padding: 10px 20px;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div:nth-child(odd) {
+  border-bottom: 1px dashed #f2f2f2;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper {
+  margin-bottom: 0;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .ant-form-item {
+  margin-bottom: 0;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .ant-form-item > .ant-form-item-label {
+  text-align: right;
+  box-sizing: border-box;
+  padding-right: 40px;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .ant-form-item > .ant-form-item-label > label {
+  color: #868686;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .ant-form-item > .ant-form-item-control-wrapper > .ant-form-item-control > input {
+  border-radius: 0;
+  height: 32px;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .photo-picker-descriptin {
+  height: 50px;
+  line-height: 50px;
+  font-size: 14px;
+  box-sizing: border-box;
+  padding-left: 25px;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .photo-picker-container {
+  box-sizing: border-box;
+  padding-left: 25px;
+  display: flex;
+  height: 170px;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .photo-picker-container > .selfimageuploader {
+  display: inline-block;
+  width: 169px;
+  height: 122px;
+  margin-right: 30px;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .photo-picker-container > .selfimageuploader > .ant-upload.ant-upload-select-picture-card {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .photo-picker-container > .selfimageuploader > .ant-upload.ant-upload-select-picture-card > span > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .photo-picker-container > .selfimageuploader > .ant-upload.ant-upload-select-picture-card > span > div > i {
+  font-size: 20px;
+  position: absolute;
+  bottom: -30px;
+  display: none;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .photo-picker-container > .selfimageuploader > .ant-upload.ant-upload-select-picture-card > span > div > .ant-upload-text {
+  position: absolute;
+  bottom: -48px;
+  border: 1px solid #2db7f5;
+  height: 30px;
+  width: 167px;
+  line-height: 30px;
+  border-radius: 10px;
+  color: #2db7f5;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .photo-picker-container > .selfimageuploader.example-image {
+  border: 1px dashed #d9d9d9;
+  position: relative;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .photo-picker-container > .selfimageuploader.example-image > img {
+  width: 100%;
+  height: 100%;
+}
+.antd-form > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .simple-layout > div > .layout-wrapper > .photo-picker-container > .selfimageuploader.example-image > .check-out-example {
+  position: absolute;
+  bottom: -48px;
+  border: 1px solid #2db7f5;
+  height: 30px;
+  width: 167px;
+  line-height: 30px;
+  border-radius: 10px;
+  color: #2db7f5;
+  text-align: center;
+}

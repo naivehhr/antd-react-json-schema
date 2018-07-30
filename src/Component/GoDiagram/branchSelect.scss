@@ -1,0 +1,67 @@
+.branch-select {
+    .ant-tabs-content{
+        height: 168px;
+        overflow-y: auto;
+        overflow-x:hidden;
+    }
+    .selected-tip {
+        position: absolute;
+        bottom: 15px;
+    }
+    .loading {
+        text-align: center;
+        height: 240px;
+        line-height: 240px;
+    }
+    .ant-radio-group {
+        width: 100%;
+    }
+    .ant-radio-wrapper {
+        width: 100%;
+        line-height: 1.5;
+        white-space: nowrap;
+        &:hover {
+            background-color: #fbfbfb;
+        }
+        &>span:not(:first-child) {
+            width: 100%;
+            text-overflow: ellipsis;
+            line-height: 1;
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+    }
+    .segment-box {
+        border: 1px solid #e9e9e9;
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 10px;
+        width: 100%;
+        position: relative;
+        transition: all .2s;
+        .segment-title {
+            position: absolute;
+            background: white;
+            padding: 0 5px;
+            top: -10px;
+        }
+        .segment-header {
+            line-height: 2;
+            background-color: white;
+        }
+        .segment-row {
+            padding: 5px;
+            line-height: 2;
+        }
+        .segment-row:nth-child(odd) {
+            background-color: #e1e1e1;
+        }
+        .segment-body {
+            max-height: 240px;
+            overflow: auto;
+            background-color: #eee;
+        }
+    }
+}

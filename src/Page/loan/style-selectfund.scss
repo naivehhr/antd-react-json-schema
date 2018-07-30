@@ -1,0 +1,32 @@
+.selectfund-container {
+	
+		.btn-group {
+			display: flex;
+			justify-content: flex-end;
+			margin-bottom: 20px;
+		}
+	
+	
+	
+		.fund-row {
+			margin-top: 20px;
+			padding: 15px;
+			border: 1px solid #eee;
+			border-radius: 50px;
+			box-shadow: 0 0 2px 	#A9A9A9;
+			transition: box-shadow 0.2s ease-in-out;
+			background-color: #ffffff
+		}
+	
+		.fund-row-select {
+			margin-top: 20px;
+			padding: 15px;
+			border: 1px solid #eee;
+			border-radius: 50px;
+			box-shadow: 0 0 20px 	#A9A9A9;
+			transition: box-shadow 0.2s ease-in-out;
+			background-color: #f9f9f9
+			
+		}
+	}
+	
