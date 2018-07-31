@@ -27,6 +27,7 @@ const defaultSchema = {
       exp: 0,
       restrain: {
         operation: "lt"
+        // value: '2018-7-25'
       }
     },
     due_date: {
@@ -41,9 +42,13 @@ const defaultSchema = {
       unique: false,
       precision: 0,
       exp: 0,
+      // restrain: {
+      //   operation: "gt",
+      //   value: '2018-7-10'
+      // },
       dependency: {
         type: "date_compare",
-        key: "bill_info.begin_date",
+        key: "begin_date", // bill_info.begin_date
         operation: "gt" //lt
       }
     },
@@ -127,6 +132,28 @@ const relativeSchema = {
   title: "联动SchemaConfig",
   titleLevel: "form",
   layout: "ContainerPadding",
+  relation: {
+    "jibenitem.isUnitInput": {
+      rely: { "jibenitem.is_three_certificate_unit": [true, undefined] },
+      invalidHidden: true
+    },
+    "jibenitem.isUnitInput1": {
+      rely: { "jibenitem.is_three_certificate_unit": [true, undefined] },
+      invalidHidden: true
+    },
+    "jibenitem.isUnitInput2": {
+      rely: { "jibenitem.is_three_certificate_unit": [true, undefined] },
+      invalidHidden: true
+    },
+    "jibenitem.unUnitInput": {
+      rely: { "jibenitem.is_three_certificate_unit": [false] },
+      invalidHidden: true
+    },
+    "jibenitem.unUnitInput1": {
+      rely: { "jibenitem.is_three_certificate_unit": [false] },
+      invalidHidden: true
+    },
+  },
   properties: {
     jibenitem: {
       type: "object",
@@ -163,55 +190,6 @@ const relativeSchema = {
           title: "营业执照到期日",
           hidden: false
         },
-        ysblLabel: {
-          type: "array",
-          title: "array关联测试",
-          itemsExclude: true,
-          items: {
-            type: "string",
-            enum: ["foo", "bar"]
-          }
-        },
-        aa: {
-          type: "string",
-          title: "aaaaaaaaaaa",
-          hidden: false
-        },
-        bb: {
-          type: "string",
-          title: "bbbbbbbbbbb",
-          hidden: false
-        }
-      },
-      relation: {
-        "jibenitem.isUnitInput": {
-          rely: { "jibenitem.is_three_certificate_unit": [true, undefined] },
-          invalidHidden: true
-        },
-        "jibenitem.isUnitInput1": {
-          rely: { "jibenitem.is_three_certificate_unit": [true, undefined] },
-          invalidHidden: true
-        },
-        "jibenitem.isUnitInput2": {
-          rely: { "jibenitem.is_three_certificate_unit": [true, undefined] },
-          invalidHidden: true
-        },
-        "jibenitem.unUnitInput": {
-          rely: { "jibenitem.is_three_certificate_unit": [false] },
-          invalidHidden: true
-        },
-        "jibenitem.unUnitInput1": {
-          rely: { "jibenitem.is_three_certificate_unit": [false] },
-          invalidHidden: true
-        },
-        "jibenitem.aa": {
-          rely: { "jibenitem.ysblLabel": ["foo"] },
-          invalidHidden: true
-        },
-        "jibenitem.bb": {
-          rely: { "jibenitem.ysblLabel": ["bar"] },
-          invalidHidden: true
-        }
       }
     }
   }

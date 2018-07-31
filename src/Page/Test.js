@@ -10,7 +10,7 @@ import { getCreactCustomerSchema, addCustomer } from "Ajax"
 import CreateComponent from "Component/CreateComponent"
 import Container from "Page/Container"
 import ReactJsonForm from "ReactJsonSchema"
-import { makeTreeDataBase } from "../Util"
+import { makeTreeDataBase, processRely } from "../Util"
 import { message, Form } from "antd"
 import _ from "lodash"
 import {
@@ -25,14 +25,14 @@ export default class Test extends Component {
   constructor() {
     super()
     this.state = {
-      schema: defaultSchema,
+      schema: relativeSchema,
       formData: {},
       uiSchema: {}
     }
   }
 
   componentWillUpdate(nextProps, nextState) {
-    this.processRely(nextState)
+    processRely(nextState)
   }
 
   componentDidMount() {
@@ -42,34 +42,34 @@ export default class Test extends Component {
     this.setState({ schema })
   }
 
-  processRely = state => {
-    const { schema, formData } = state || this.state
-    Object.keys(schema.relation).forEach(key => {
-      let sourceObj = _.get(schema, this.makeIdStrById(key.split("."))) //源对像
-      let { rely, invalidHidden } = schema.relation[key]
-      let keys = Object.keys(rely) || [] //被关联的所有key
-      let result = true
-      for (let i = 0, len = keys.length; i < len && result; i++) {
-        let key = keys[i], //被关联的key
-          targetValue = _.get(relativeFormData, key), //被关联的值
-          valueArr = rely[key] || [] //关联条件值列表
-        //console.log(valueArr, targetValue, valueArr.indexOf(targetValue))
-        if (valueArr.indexOf(targetValue) > -1) {
-          //有效
-        } else {
-          //无效
-          result = false
-        }
-      }
-      if (result) {
-        //有效
-        sourceObj.hidden = false
-      } else {
-        //无效
-        sourceObj.hidden = true && invalidHidden
-      }
-    })
-  }
+  // processRely = state => {
+  //   const { schema, formData } = state || this.state
+  //   Object.keys(schema.relation).forEach(key => {
+  //     let sourceObj = _.get(schema, this.makeIdStrById(key.split("."))) //源对像
+  //     let { rely, invalidHidden } = schema.relation[key]
+  //     let keys = Object.keys(rely) || [] //被关联的所有key
+  //     let result = true
+  //     for (let i = 0, len = keys.length; i < len && result; i++) {
+  //       let key = keys[i], //被关联的key
+  //         targetValue = _.get(relativeFormData, key), //被关联的值
+  //         valueArr = rely[key] || [] //关联条件值列表
+  //       //console.log(valueArr, targetValue, valueArr.indexOf(targetValue))
+  //       if (valueArr.indexOf(targetValue) > -1) {
+  //         //有效
+  //       } else {
+  //         //无效
+  //         result = false
+  //       }
+  //     }
+  //     if (result) {
+  //       //有效
+  //       sourceObj.hidden = false
+  //     } else {
+  //       //无效
+  //       sourceObj.hidden = true && invalidHidden
+  //     }
+  //   })
+  // }
 
   onChange = (e, id) => {
     this.setState({

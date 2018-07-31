@@ -111,8 +111,8 @@ export const processRely = (
       let currentId = idReqArr[idReqArr.length - 1]
       let idReqStr =
         idReqArr.slice(0, idReqArr.length - 2).join(".") + ".required"
-      let reqOrigArr = _.get(originalSchema, idReqStr)
-      let reqCurrArr = _.get(_schema, idReqStr)
+      let reqOrigArr = _.get(originalSchema, idReqStr) || []
+      let reqCurrArr = _.get(_schema, idReqStr) || []
       if (result) {
         sourceObj.hidden = false
         // 恢复require为原始状态

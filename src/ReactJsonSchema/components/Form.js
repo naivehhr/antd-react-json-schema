@@ -172,9 +172,11 @@ class _Form extends Component {
       }, '')
       pathStr += `.dependency.value`
       _.set(_schema, pathStr, targV)
+      // 这更新有问题, 不确定外层还有哪有延迟的更新, 所以要尽量只setState一次
+      // 应该是外层的formData导致的😂
       setTimeout(() => {
         this.setState({ schema: _schema })
-      }, 1);
+      }, 1000);
     }
   }
 
