@@ -5,41 +5,43 @@
  * @Last Modified time: 2017-11-14 17:11:03
  */
 
-import React, { Component } from "react"
-import { getCreactCustomerSchema, addCustomer } from "Ajax"
-import CreateComponent from "Component/CreateComponent"
-import Container from "Page/Container"
-import ReactJsonForm from "ReactJsonSchema"
-import { makeTreeDataBase, processRely } from "../Util"
-import { message, Form } from "antd"
-import _ from "lodash"
+import React, { Component } from "react";
+import { getCreactCustomerSchema, addCustomer } from "Ajax";
+import CreateComponent from "Component/CreateComponent";
+import Container from "Page/Container";
+import ReactJsonForm from "ReactJsonSchema";
+import { makeTreeDataBase, processRely } from "../Util";
+import { message, Form } from "antd";
+import _ from "lodash";
+import ReactJson from "react-json-view";
+
 import {
   defaultSchema,
   relativeSchema,
   arraySchema,
   errorSchema,
   asyncErrorSchema
-} from "./SchemaConfig"
+} from "./SchemaConfig";
 
 export default class Test extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      schema: relativeSchema,
+      schema: defaultSchema,
       formData: {},
       uiSchema: {}
-    }
+    };
   }
 
   componentWillUpdate(nextProps, nextState) {
-    processRely(nextState)
+    processRely(nextState);
   }
 
   componentDidMount() {
-    const { schema } = this.state
-    let treeData = makeTreeDataBase(schema)
-    _.set(schema, "definitions.treeData.treeData", treeData)
-    this.setState({ schema })
+    const { schema } = this.state;
+    let treeData = makeTreeDataBase(schema);
+    _.set(schema, "definitions.treeData.treeData", treeData);
+    this.setState({ schema });
   }
 
   // processRely = state => {
@@ -75,12 +77,12 @@ export default class Test extends Component {
     this.setState({
       formData: e,
       relativeFormData: e
-    })
-  }
+    });
+  };
 
   makeIdStrById = idArr => {
-    return `properties.${idArr.join(".properties.")}`
-  }
+    return `properties.${idArr.join(".properties.")}`;
+  };
 
   onSubmit = (e, callback) => {
     // console.log("submit", callback);
@@ -100,27 +102,50 @@ export default class Test extends Component {
           __errors: [{ pkq: "我不叫皮卡丘" }]
         }
       }
-    }
-    let data = { formError }
-    callback(data)
-  }
+    };
+    let data = { formError };
+    callback(data);
+  };
 
   onSelect = data => {
-    console.log("123", data)
-  }
+    console.log("123", data);
+  };
   render() {
-    const { formData, schema } = this.state
+    const { formData, schema } = this.state;
+    console.log('formData', formData)
     return (
       <Container>
-        <ReactJsonForm
-          {...this.props}
-          schema={schema}
-          formData={formData}
-          onChange={this.onChange}
-          onSubmit={this.onSubmit}
-          onSelect={this.onSelect}
-        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center"
+          }}
+        >
+          <div
+            style={{
+              marginRight: 50
+            }}
+          >
+            <ReactJson
+              src={schema}
+              theme="bright:inverted"
+              displayDataTypes={false}
+              onEdit={e => console.log("edit", e)}
+              onAdd={e => console.log("add", e)}
+            />
+          </div>
+          <div>
+            <ReactJsonForm
+              {...this.props}
+              schema={schema}
+              formData={formData}
+              onChange={this.onChange}
+              onSubmit={this.onSubmit}
+              onSelect={this.onSelect}
+            />
+          </div>
+        </div>
       </Container>
-    )
+    );
   }
 }

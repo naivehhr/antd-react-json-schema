@@ -5,6 +5,7 @@ const defaultSchema = {
   layout: "Simple",
   // required: ["name"],
   properties: {
+    dd: {},
     name: {
       type: "string",
       title: "姓名"
@@ -100,7 +101,7 @@ const defaultSchema = {
     }
   },
   relation: {}
-}
+};
 const arraySchema = {
   definitions: {
     Thing: {
@@ -126,7 +127,7 @@ const arraySchema = {
       }
     }
   }
-}
+};
 const relativeSchema = {
   type: "object",
   title: "联动SchemaConfig",
@@ -152,7 +153,7 @@ const relativeSchema = {
     "jibenitem.unUnitInput1": {
       rely: { "jibenitem.is_three_certificate_unit": [false] },
       invalidHidden: true
-    },
+    }
   },
   properties: {
     jibenitem: {
@@ -189,11 +190,11 @@ const relativeSchema = {
           type: "string",
           title: "营业执照到期日",
           hidden: false
-        },
+        }
       }
     }
   }
-}
+};
 const errorSchema = {
   type: "object",
   title: "表单验证",
@@ -232,7 +233,7 @@ const errorSchema = {
     }
   },
   relation: {}
-}
+};
 const asyncErrorSchema = {
   type: "object",
   title: "异步表单验证",
@@ -261,11 +262,11 @@ const asyncErrorSchema = {
       }
     }
   }
-}
+};
 export {
   defaultSchema,
   relativeSchema,
   arraySchema,
   errorSchema,
   asyncErrorSchema
-}
+};
