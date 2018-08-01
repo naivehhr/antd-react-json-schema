@@ -43,12 +43,12 @@ function AntdTextWidget(props) {
 		// 	_value = parseFloat(_value).toFixed(schema.precision || 2)
 		// }
 		// console.log('onchange =====', _value)
-		let obj = document.getElementById(id)
-		let d = getCursortPosition(obj)
+		// let obj = document.getElementById(id)
+		// let d = getCursortPosition(obj)
 		onChange && onChange(event.target.value ? _value : undefined, id)
-		setTimeout(() => {
-			setCaretPosition(obj, d + 1)
-		})
+		// setTimeout(() => {
+		// 	setCaretPosition(obj, d + 1)
+		// })
 	}
 
 

@@ -101,7 +101,7 @@ const defaultSchema = {
     }
   },
   relation: {}
-};
+}
 const arraySchema = {
   definitions: {
     Thing: {
@@ -127,7 +127,7 @@ const arraySchema = {
       }
     }
   }
-};
+}
 const relativeSchema = {
   type: "object",
   title: "联动SchemaConfig",
@@ -194,7 +194,7 @@ const relativeSchema = {
       }
     }
   }
-};
+}
 const errorSchema = {
   type: "object",
   title: "表单验证",
@@ -233,10 +233,10 @@ const errorSchema = {
     }
   },
   relation: {}
-};
+}
 const asyncErrorSchema = {
   type: "object",
-  title: "异步表单验证",
+  title: "手动设置表单错误信息",
   titleLevel: "form",
   layout: "Simple",
   relation: {},
@@ -262,11 +262,52 @@ const asyncErrorSchema = {
       }
     }
   }
-};
+}
+
+const tabsLayoutSchema = {
+  type: "object",
+  title: "基础SchemaConfig",
+  titleLevel: "form",
+  layout: "Tabs",
+  relation: {},
+  properties: {
+    userInfo: {
+      type: "object",
+      title: "用户信息",
+      layout: "Simple",
+      properties: {
+        name: {
+          type: "string",
+          title: "姓名"
+        },
+        age: {
+          type: "string",
+          title: "年龄"
+        }
+      }
+    },
+    companyInfo: {
+      type: "object",
+      title: "用户信息",
+      layout: "Simple",
+      properties: {
+        address: {
+          type: "string",
+          title: "地址"
+        },
+        scale: {
+          type: "string",
+          title: "规模"
+        }
+      }
+    }
+  }
+}
 export {
   defaultSchema,
   relativeSchema,
   arraySchema,
   errorSchema,
-  asyncErrorSchema
-};
+  asyncErrorSchema,
+  tabsLayoutSchema
+}

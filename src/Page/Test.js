@@ -5,43 +5,54 @@
  * @Last Modified time: 2017-11-14 17:11:03
  */
 
-import React, { Component } from "react";
-import { getCreactCustomerSchema, addCustomer } from "Ajax";
-import CreateComponent from "Component/CreateComponent";
-import Container from "Page/Container";
-import ReactJsonForm from "ReactJsonSchema";
-import { makeTreeDataBase, processRely } from "../Util";
-import { message, Form } from "antd";
-import _ from "lodash";
-import ReactJson from "react-json-view";
+import React, { Component } from "react"
+import { getCreactCustomerSchema, addCustomer } from "Ajax"
+import CreateComponent from "Component/CreateComponent"
+import Container from "Page/Container"
+import ReactJsonForm from "ReactJsonSchema"
+import { makeTreeDataBase, processRely } from "../Util"
+import { message, Form, Radio } from "antd"
+import _ from "lodash"
+import ReactJson from "react-json-view"
 
 import {
   defaultSchema,
   relativeSchema,
   arraySchema,
   errorSchema,
-  asyncErrorSchema
-} from "./SchemaConfig";
+  asyncErrorSchema,
+  tabsLayoutSchema
+} from "./SchemaConfig"
+const RadioGroup = Radio.Group
 
+const SCHEMA = {
+  1: defaultSchema,
+  2: relativeSchema,
+  3: arraySchema,
+  4: errorSchema,
+  5: asyncErrorSchema,
+  6: tabsLayoutSchema
+}
 export default class Test extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      schema: defaultSchema,
+      schema: asyncErrorSchema,
       formData: {},
-      uiSchema: {}
-    };
+      uiSchema: {},
+      value: 1
+    }
   }
 
   componentWillUpdate(nextProps, nextState) {
-    processRely(nextState);
+    processRely(nextState)
   }
 
   componentDidMount() {
-    const { schema } = this.state;
-    let treeData = makeTreeDataBase(schema);
-    _.set(schema, "definitions.treeData.treeData", treeData);
-    this.setState({ schema });
+    const { schema } = this.state
+    let treeData = makeTreeDataBase(schema)
+    _.set(schema, "definitions.treeData.treeData", treeData)
+    this.setState({ schema })
   }
 
   // processRely = state => {
@@ -77,12 +88,12 @@ export default class Test extends Component {
     this.setState({
       formData: e,
       relativeFormData: e
-    });
-  };
+    })
+  }
 
   makeIdStrById = idArr => {
-    return `properties.${idArr.join(".properties.")}`;
-  };
+    return `properties.${idArr.join(".properties.")}`
+  }
 
   onSubmit = (e, callback) => {
     // console.log("submit", callback);
@@ -102,36 +113,66 @@ export default class Test extends Component {
           __errors: [{ pkq: "我不叫皮卡丘" }]
         }
       }
-    };
-    let data = { formError };
-    callback(data);
-  };
+    }
+    let data = { formError }
+    callback(data)
+  }
 
   onSelect = data => {
-    console.log("123", data);
-  };
+    console.log("123", data)
+  }
+
+  handleChange = ({ updated_src }) => this.setState({ schema: updated_src })
+
+  handleRadioChange = e =>
+    this.setState({ schema: SCHEMA[e.target.value], value: e.target.value })
+
   render() {
-    const { formData, schema } = this.state;
-    console.log('formData', formData)
+    const { formData, schema } = this.state
+    console.log("formData", formData)
     return (
       <Container>
         <div
           style={{
             display: "flex",
-            justifyContent: "center"
+            width: 1000,
+            justifyContent: "center",
+            marginBottom: 50
+          }}
+        >
+          <RadioGroup
+            onChange={this.handleRadioChange}
+            value={this.state.value}
+          >
+            <Radio value={1}>defaultSchema</Radio>
+            <Radio value={2}>ArraySchema</Radio>
+            <Radio value={3}>RelativeSchema</Radio>
+            <Radio value={4}>ErrorSchema</Radio>
+            <Radio value={5}>AsyncErrorSchema</Radio>
+            <Radio value={6}>TabsLayoutSchema</Radio>
+          </RadioGroup>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            width: 1000,
+            justifyContent: "space-between"
           }}
         >
           <div
             style={{
+              minWidth: 400,
               marginRight: 50
             }}
           >
+            <p style={{fontSize: 20, marginBottom: 10}}>Schema</p>
             <ReactJson
               src={schema}
               theme="bright:inverted"
               displayDataTypes={false}
-              onEdit={e => console.log("edit", e)}
-              onAdd={e => console.log("add", e)}
+              onEdit={this.handleChange}
+              onAdd={this.handleChange}
+              onDelete={this.handleChange}
             />
           </div>
           <div>
@@ -146,6 +187,6 @@ export default class Test extends Component {
           </div>
         </div>
       </Container>
-    );
+    )
   }
 }
