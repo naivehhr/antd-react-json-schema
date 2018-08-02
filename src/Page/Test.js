@@ -5,15 +5,15 @@
  * @Last Modified time: 2017-11-14 17:11:03
  */
 
-import React, { Component } from "react"
-import { getCreactCustomerSchema, addCustomer } from "Ajax"
-import CreateComponent from "Component/CreateComponent"
-import Container from "Page/Container"
-import ReactJsonForm from "ReactJsonSchema"
-import { makeTreeDataBase, processRely } from "../Util"
-import { message, Form, Radio } from "antd"
-import _ from "lodash"
-import ReactJson from "react-json-view"
+import React, { Component } from "react";
+import { getCreactCustomerSchema, addCustomer } from "Ajax";
+import CreateComponent from "Component/CreateComponent";
+import Container from "Page/Container";
+import ReactJsonForm from "ReactJsonSchema";
+import { makeTreeDataBase, processRely } from "../Util";
+import { message, Form, Radio } from "antd";
+import _ from "lodash";
+import ReactJson from "react-json-view";
 
 import {
   defaultSchema,
@@ -23,79 +23,52 @@ import {
   asyncErrorSchema,
   tabsLayoutSchema,
   modalsSchema
-} from "./SchemaConfig"
-const RadioGroup = Radio.Group
+} from "./SchemaConfig";
+const RadioGroup = Radio.Group;
 
 const SCHEMA = {
   1: defaultSchema,
-  2: relativeSchema,
-  3: arraySchema,
+  2: arraySchema,
+  3: relativeSchema,
   4: errorSchema,
   5: asyncErrorSchema,
   6: tabsLayoutSchema,
   7: modalsSchema
-}
+};
 export default class Test extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
+    const value = 1;
+    const schema = SCHEMA[value];
     this.state = {
-      schema: SCHEMA[1],
-      formData: {},
+      schema: schema,
+      formData: schema.formData,
       uiSchema: {},
-      value: 1
-    }
+      value
+    };
   }
 
   componentWillUpdate(nextProps, nextState) {
-    processRely(nextState)
+    processRely(nextState);
   }
 
   componentDidMount() {
-    const { schema } = this.state
-    let treeData = makeTreeDataBase(schema)
-    _.set(schema, "definitions.treeData.treeData", treeData)
-    this.setState({ schema })
+    const { schema } = this.state;
+    let treeData = makeTreeDataBase(schema);
+    _.set(schema, "definitions.treeData.treeData", treeData);
+    this.setState({ schema });
   }
-
-  // processRely = state => {
-  //   const { schema, formData } = state || this.state
-  //   Object.keys(schema.relation).forEach(key => {
-  //     let sourceObj = _.get(schema, this.makeIdStrById(key.split("."))) //源对像
-  //     let { rely, invalidHidden } = schema.relation[key]
-  //     let keys = Object.keys(rely) || [] //被关联的所有key
-  //     let result = true
-  //     for (let i = 0, len = keys.length; i < len && result; i++) {
-  //       let key = keys[i], //被关联的key
-  //         targetValue = _.get(relativeFormData, key), //被关联的值
-  //         valueArr = rely[key] || [] //关联条件值列表
-  //       //console.log(valueArr, targetValue, valueArr.indexOf(targetValue))
-  //       if (valueArr.indexOf(targetValue) > -1) {
-  //         //有效
-  //       } else {
-  //         //无效
-  //         result = false
-  //       }
-  //     }
-  //     if (result) {
-  //       //有效
-  //       sourceObj.hidden = false
-  //     } else {
-  //       //无效
-  //       sourceObj.hidden = true && invalidHidden
-  //     }
-  //   })
-  // }
 
   onChange = (e, id) => {
     this.setState({
       formData: e,
       relativeFormData: e
-    })
-  }
+    });
+  };
 
   makeIdStrById = idArr => {
-    return `properties.${idArr.join(".properties.")}`
-  }
+    return `properties.${idArr.join(".properties.")}`;
+  };
 
   onSubmit = (e, callback) => {
     // console.log("submit", callback);
@@ -115,25 +88,28 @@ export default class Test extends Component {
           __errors: [{ pkq: "我不叫皮卡丘" }]
         }
       }
-    }
-    let data = { formError }
-    callback(data)
-  }
+    };
+    let data = { formError };
+    callback(data);
+  };
 
   onSelect = data => {
-    console.log("123", data)
-  }
+    console.log("123", data);
+  };
 
-  handleChange = ({ updated_src }) => this.setState({ schema: updated_src })
+  handleChange = ({ updated_src }) => this.setState({ schema: updated_src });
 
-  handleRadioChange = e =>
+  handleRadioChange = e => {
+    const { value } = e.target;
     this.setState({
-      schema: SCHEMA[e.target.value],
-      value: e.target.value
-    })
+      schema: SCHEMA[value],
+      formData: SCHEMA[value].formData,
+      value
+    });
+  };
 
   render() {
-    const { formData, schema } = this.state
+    const { formData, schema } = this.state;
     return (
       <Container>
         <div
@@ -192,6 +168,6 @@ export default class Test extends Component {
           </div>
         </div>
       </Container>
-    )
+    );
   }
 }

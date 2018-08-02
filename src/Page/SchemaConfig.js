@@ -100,8 +100,17 @@ const defaultSchema = {
       format: "image"
     }
   },
-  relation: {}
-}
+  relation: {},
+  formData: {
+    name: "凹凸曼",
+    age: "123",
+    begin_date: "2018-8-1",
+    due_date: "2018-8-9",
+    multipleChoicesList: ["foo"],
+    agreement_checkbox: true,
+    blendMode: "one"
+  }
+};
 const arraySchema = {
   definitions: {
     Thing: {
@@ -126,8 +135,17 @@ const arraySchema = {
         $ref: "#/definitions/Thing"
       }
     }
+  },
+  formData: {
+    minItemsList: [
+      {
+        Thing: {
+          name: "默认名称s"
+        }
+      }
+    ]
   }
-}
+};
 const relativeSchema = {
   type: "object",
   title: "联动SchemaConfig",
@@ -193,8 +211,18 @@ const relativeSchema = {
         }
       }
     }
+  },
+  formData: {
+    jibenitem: {
+      is_three_certificate_unit: true,
+      isUnitInput: "",
+      isUnitInput1: "",
+      isUnitInput2: "",
+      unUnitInput: "",
+      unUnitInput1: ""
+    }
   }
-}
+};
 const errorSchema = {
   type: "object",
   title: "表单验证",
@@ -211,7 +239,7 @@ const errorSchema = {
       type: "string",
       minLength: 3
     },
-    age: {
+    count: {
       title: "最小数字校验",
       type: "number",
       minimum: 18
@@ -232,14 +260,27 @@ const errorSchema = {
       title: "AsyncSource"
     }
   },
-  relation: {}
-}
+  relation: {},
+  formData: {
+    name: "",
+    pass1: "",
+    count: null,
+    firstName: ""
+  }
+};
 const asyncErrorSchema = {
   type: "object",
   title: "手动设置表单错误信息",
   titleLevel: "form",
   layout: "Simple",
   relation: {},
+  formData: {
+    jibenitem: {
+      hy: "",
+      hz: "",
+      pkq: ""
+    }
+  },
   properties: {
     jibenitem: {
       type: "object",
@@ -262,13 +303,29 @@ const asyncErrorSchema = {
       }
     }
   }
-}
+};
 const tabsLayoutSchema = {
   type: "object",
   title: "基础SchemaConfig",
   titleLevel: "form",
   layout: "Tabs",
   relation: {},
+  formData: {
+    userInfo: {
+      name: "",
+      age: ""
+    },
+    companyInfo: {
+      address: "",
+      scale: ""
+    },
+    tabOptions: {
+      Simple: "Simple",
+      WholeSchemaLayout: "WholeSchemaLayout",
+      TitleChildLayout: "TitleChildLayout",
+      Horizontal: "Horizontal"
+    }
+  },
   properties: {
     userInfo: {
       type: "object",
@@ -305,33 +362,42 @@ const tabsLayoutSchema = {
       title: "可选Layout",
       layout: "Simple",
       properties: {
-        address1: {
+        Simple: {
           type: "string",
           title: "Simple"
         },
-        address: {
+        WholeSchemaLayout: {
           type: "string",
           title: "WholeSchemaLayout"
         },
-        scale: {
+        TitleChildLayout: {
           type: "string",
           title: "TitleChildLayout"
         },
-        scale1: {
+        Horizontal: {
           type: "string",
           title: "Horizontal"
         }
       }
     }
   }
-}
+};
 const modalsSchema = {
   type: "object",
   title: "Modal SchemaConfig",
   titleLevel: "form",
-  
   layout: "WholeSchemaLayout", // Simple WholeSchemaLayout TitleChildLayout, Horizontal
   // required: ["name"],
+  formData: {
+    jibenitem: {
+      hy1: "",
+      hz1: "",
+      pkq: {
+        hy1: "",
+        hz1: ""
+      }
+    }
+  },
   properties: {
     jibenitem: {
       type: "object",
@@ -339,11 +405,11 @@ const modalsSchema = {
       titleLevel: "one",
       layout: "Simple",
       properties: {
-        hy: {
+        hy1: {
           title: "火影",
           type: "string"
         },
-        hz: {
+        hz1: {
           title: "海贼",
           type: "string"
         },
@@ -368,7 +434,7 @@ const modalsSchema = {
     }
   },
   relation: {}
-}
+};
 export {
   defaultSchema,
   relativeSchema,
@@ -377,4 +443,4 @@ export {
   asyncErrorSchema,
   tabsLayoutSchema,
   modalsSchema
-}
+};
