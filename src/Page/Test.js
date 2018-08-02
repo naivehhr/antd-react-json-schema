@@ -21,7 +21,8 @@ import {
   arraySchema,
   errorSchema,
   asyncErrorSchema,
-  tabsLayoutSchema
+  tabsLayoutSchema,
+  modalsSchema
 } from "./SchemaConfig"
 const RadioGroup = Radio.Group
 
@@ -31,13 +32,14 @@ const SCHEMA = {
   3: arraySchema,
   4: errorSchema,
   5: asyncErrorSchema,
-  6: tabsLayoutSchema
+  6: tabsLayoutSchema,
+  7: modalsSchema
 }
 export default class Test extends Component {
   constructor() {
     super()
     this.state = {
-      schema: asyncErrorSchema,
+      schema: SCHEMA[1],
       formData: {},
       uiSchema: {},
       value: 1
@@ -125,11 +127,13 @@ export default class Test extends Component {
   handleChange = ({ updated_src }) => this.setState({ schema: updated_src })
 
   handleRadioChange = e =>
-    this.setState({ schema: SCHEMA[e.target.value], value: e.target.value })
+    this.setState({
+      schema: SCHEMA[e.target.value],
+      value: e.target.value
+    })
 
   render() {
     const { formData, schema } = this.state
-    console.log("formData", formData)
     return (
       <Container>
         <div
@@ -144,12 +148,13 @@ export default class Test extends Component {
             onChange={this.handleRadioChange}
             value={this.state.value}
           >
-            <Radio value={1}>defaultSchema</Radio>
-            <Radio value={2}>ArraySchema</Radio>
-            <Radio value={3}>RelativeSchema</Radio>
-            <Radio value={4}>ErrorSchema</Radio>
-            <Radio value={5}>AsyncErrorSchema</Radio>
-            <Radio value={6}>TabsLayoutSchema</Radio>
+            <Radio value={1}>default</Radio>
+            <Radio value={2}>Array</Radio>
+            <Radio value={3}>Relative</Radio>
+            <Radio value={4}>Error</Radio>
+            <Radio value={5}>AsyncError</Radio>
+            <Radio value={6}>TabsLayout</Radio>
+            <Radio value={7}>Modal</Radio>
           </RadioGroup>
         </div>
         <div
@@ -165,7 +170,7 @@ export default class Test extends Component {
               marginRight: 50
             }}
           >
-            <p style={{fontSize: 20, marginBottom: 10}}>Schema</p>
+            <p style={{ fontSize: 20, marginBottom: 10 }}>Schema</p>
             <ReactJson
               src={schema}
               theme="bright:inverted"

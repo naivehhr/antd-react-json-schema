@@ -38,14 +38,14 @@ function AntdNumberWidget(props) {
 		validateStatus = 'error'
 	}
 	let _onChange = (event) => {
-		let obj = document.getElementById(id)
-		let d = getCursortPosition(obj)
+		// let obj = document.getElementById(id)
+		// let d = getCursortPosition(obj)
 		onChange && onChange(event, id)
-		if (event) {
-			setTimeout(() => {
-				setCaretPosition(obj, d + 1)
-			})
-		}
+		// if (event) {
+		// 	setTimeout(() => {
+		// 		setCaretPosition(obj, d + 1)
+		// 	})
+		// }
 	}
 	// let newValue
 	// if (schema.format == 'amount') {

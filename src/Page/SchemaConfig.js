@@ -2,7 +2,7 @@ const defaultSchema = {
   type: "object",
   title: "基础SchemaConfig",
   titleLevel: "form",
-  layout: "Simple",
+  layout: "WholeSchemaLayout", // Simple WholeSchemaLayout TitleChildLayout, Horizontal
   // required: ["name"],
   properties: {
     dd: {},
@@ -263,7 +263,6 @@ const asyncErrorSchema = {
     }
   }
 }
-
 const tabsLayoutSchema = {
   type: "object",
   title: "基础SchemaConfig",
@@ -300,8 +299,75 @@ const tabsLayoutSchema = {
           title: "规模"
         }
       }
+    },
+    tabOptions: {
+      type: "object",
+      title: "可选Layout",
+      layout: "Simple",
+      properties: {
+        address1: {
+          type: "string",
+          title: "Simple"
+        },
+        address: {
+          type: "string",
+          title: "WholeSchemaLayout"
+        },
+        scale: {
+          type: "string",
+          title: "TitleChildLayout"
+        },
+        scale1: {
+          type: "string",
+          title: "Horizontal"
+        }
+      }
     }
   }
+}
+const modalsSchema = {
+  type: "object",
+  title: "Modal SchemaConfig",
+  titleLevel: "form",
+  
+  layout: "WholeSchemaLayout", // Simple WholeSchemaLayout TitleChildLayout, Horizontal
+  // required: ["name"],
+  properties: {
+    jibenitem: {
+      type: "object",
+      title: "基本信息",
+      titleLevel: "one",
+      layout: "Simple",
+      properties: {
+        hy: {
+          title: "火影",
+          type: "string"
+        },
+        hz: {
+          title: "海贼",
+          type: "string"
+        },
+        pkq: {
+          type: "object",
+          title: "Modal 表单",
+          titleLevel: "one",
+          modal: true, // 这来控制是否是弹窗喽
+          layout: "Simple",
+          properties: {
+            hy1: {
+              title: "柯南",
+              type: "string"
+            },
+            hz1: {
+              title: "七龙珠",
+              type: "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  relation: {}
 }
 export {
   defaultSchema,
@@ -309,5 +375,6 @@ export {
   arraySchema,
   errorSchema,
   asyncErrorSchema,
-  tabsLayoutSchema
+  tabsLayoutSchema,
+  modalsSchema
 }
