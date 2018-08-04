@@ -275,14 +275,14 @@ const asyncErrorSchema = {
   layout: "Simple",
   relation: {},
   formData: {
-    jibenitem: {
+    jibenitem1: {
       hy: "",
       hz: "",
       pkq: ""
     }
   },
   properties: {
-    jibenitem: {
+    jibenitem1: {
       type: "object",
       title: "基本信息",
       titleLevel: "one",

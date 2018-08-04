@@ -28,8 +28,9 @@ function AntdTextWidget(props) {
 		...inputProps
 	} = props;
 	let errMsg = getErrorMsg(errors)(id)
-	const { getFieldDecorator, getFieldsValue, getFieldValue, setFieldsValue, getFieldsError, getFieldError, isFieldTouched } = props.formContext.myFormFun
 
+	const { getFieldDecorator, getFieldsValue, getFieldValue, setFieldsValue, getFieldsError, getFieldError, isFieldTouched } = props.formContext.myFormFun
+	
 	// const formItemLayout = {
 	// 	labelCol: { span: 6 },
 	// 	wrapperCol: { span: 18 }

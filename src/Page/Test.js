@@ -38,7 +38,7 @@ const SCHEMA = {
 export default class Test extends Component {
   constructor(props) {
     super(props);
-    const value = 1;
+    const value = 4;
     const schema = SCHEMA[value];
     this.state = {
       schema: schema,
@@ -73,7 +73,7 @@ export default class Test extends Component {
   onSubmit = (e, callback) => {
     // console.log("submit", callback);
     let formError = {
-      jibenitem: {
+      jibenitem1: {
         hy: {
           __errors: [
             {
@@ -149,6 +149,22 @@ export default class Test extends Component {
             <p style={{ fontSize: 20, marginBottom: 10 }}>Schema</p>
             <ReactJson
               src={schema}
+              theme="bright:inverted"
+              displayDataTypes={false}
+              onEdit={this.handleChange}
+              onAdd={this.handleChange}
+              onDelete={this.handleChange}
+            />
+          </div>
+          <div
+            style={{
+              minWidth: 400,
+              marginRight: 50
+            }}
+          >
+            <p style={{ fontSize: 20, marginBottom: 10 }}>FormData</p>
+            <ReactJson
+              src={formData}
               theme="bright:inverted"
               displayDataTypes={false}
               onEdit={this.handleChange}

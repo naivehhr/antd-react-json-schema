@@ -10,15 +10,11 @@ import {
   getDefaultRegistry,
   transformErrors
 } from "../utils";
-import { formatAmountValue, processRely } from '../../Util'
-import './style.scss'
+import { formatAmountValue, processRely } from "../../Util";
+import "./style.scss";
 import validateFormData from "../validate";
-import {
-  Form,
-  Input,
-  Button
-} from 'antd'
-const FormItem = Form.Item
+import { Form, Input, Button } from "antd";
+const FormItem = Form.Item;
 class _Form extends Component {
   static defaultProps = {
     uiSchema: {},
@@ -26,7 +22,7 @@ class _Form extends Component {
     liveValidate: false,
     safeRenderCompletion: false,
     noHtml5Validate: false,
-    ErrorList: DefaultErrorList,
+    ErrorList: DefaultErrorList
   };
 
   constructor(props) {
@@ -35,10 +31,10 @@ class _Form extends Component {
   }
 
   componentDidMount() {
-    const { schema, formData, originalSchema } = this.state
-    let newSchema = processRely(schema, formData, originalSchema)
+    const { schema, formData, originalSchema } = this.state;
+    let newSchema = processRely(schema, formData, originalSchema);
     // // 这里要不这么写是不是也行？
-    this.setState({ schema: newSchema })
+    this.setState({ schema: newSchema });
   }
 
   componentWillReceiveProps(nextProps, nextState) {
@@ -46,7 +42,9 @@ class _Form extends Component {
       this.setState({ formData: nextProps.formData });
     }
     if (nextProps.schema) {
-      this.setState({ schema: nextProps.schema });
+      // 为了演示用, 重新生成各层ID
+      const idSchema = toIdSchema(nextProps.schema);
+      this.setState({ schema: nextProps.schema, idSchema });
     }
     if (nextProps.uiSchema) {
       this.setState({ uiSchema: nextProps.uiSchema });
@@ -59,12 +57,11 @@ class _Form extends Component {
   //   }, 2000);
   // }
 
-
   getStateFromProps(props) {
-    if (!props.schema) return {}
+    if (!props.schema) return {};
     const state = this.state || {};
     const schema = "schema" in props ? props.schema : this.props.schema;
-    const originalSchema = _.cloneDeep(schema)
+    const originalSchema = _.cloneDeep(schema);
     const uiSchema = "uiSchema" in props ? props.uiSchema : this.props.uiSchema;
     const edit = typeof props.formData !== "undefined";
     const liveValidate = props.liveValidate || this.props.liveValidate;
@@ -74,9 +71,9 @@ class _Form extends Component {
     const { errors, errorSchema } = mustValidate
       ? this.validate(formData, schema)
       : {
-        errors: state.errors || [],
-        errorSchema: state.errorSchema || {},
-      };
+          errors: state.errors || [],
+          errorSchema: state.errorSchema || {}
+        };
     const idSchema = toIdSchema(
       schema,
       uiSchema["ui:rootFieldId"],
@@ -90,12 +87,12 @@ class _Form extends Component {
       formData,
       edit,
       errors,
-      errorSchema,
+      errorSchema
     };
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return true
+    return true;
   }
 
   validate(formData, schema, idSchema) {
@@ -112,7 +109,6 @@ class _Form extends Component {
   renderErrors() {
     // const { errors, errorSchema, schema, uiSchema } = this.state;
     // const { ErrorList, showErrorList, formContext } = this.props;
-
     // if (errors.length && showErrorList != false) {
     //   return (
     //     <ErrorList
@@ -144,74 +140,83 @@ class _Form extends Component {
 
   /**
    * 在formdata级别运算数据依赖关系.
-   * @param {*} rootData 
-   * @param {*} dependency 
+   * @param {*} rootData
+   * @param {*} dependency
    * @param {*} pathArr 查找路径数组
    */
   __parseDependencyData(rootData, dependency, pathArr) {
     //之后也许支付复杂运算的
-    if (dependency.type == 'equal') {
+    if (dependency.type == "equal") {
       let targetkey = dependency.key;
       let valuepaths = targetkey.split(".");
       let str = valuepaths.reduce((c, p) => {
-        return `${c}.${p}`
-      })
+        return `${c}.${p}`;
+      });
       let str1 = pathArr.reduce((c, p) => {
-        return `${c}.${p}`
-      })
-      _.set(rootData, str1, _.get(rootData, str))
-    } else if (dependency.type == 'date_compare') {
+        return `${c}.${p}`;
+      });
+      _.set(rootData, str1, _.get(rootData, str));
+    } else if (dependency.type == "date_compare") {
       // 动态更改相关的schema
-      let targV = _.get(rootData, dependency.key)
-      let _schema = _.cloneDeep(this.state.schema)
+      let targV = _.get(rootData, dependency.key);
+      let _schema = _.cloneDeep(this.state.schema);
       let pathStr = pathArr.reduce((c, p) => {
-        if (c != '') {
-          return `${c}.properties.${p}`
+        if (c != "") {
+          return `${c}.properties.${p}`;
         }
-        return `properties.${p}`
-      }, '')
-      pathStr += `.dependency.value`
-      _.set(_schema, pathStr, targV)
+        return `properties.${p}`;
+      }, "");
+      pathStr += `.dependency.value`;
+      _.set(_schema, pathStr, targV);
       // 这更新有问题, 不确定外层还有哪有延迟的更新, 所以要尽量只setState一次
       // 应该是外层的formData导致的😂
       setTimeout(() => {
-        this.setState({ schema: _schema })
+        this.setState({ schema: _schema });
       }, 1000);
     }
   }
 
   //在formdata级别运算数据.
   _handleDataDependency(root_formData, formData, schema, pathArr = []) {
-    if (schema.type == 'object') {
+    if (schema.type == "object") {
       for (var key in schema.properties) {
-        let _pathArr = pathArr.slice()
-        _pathArr.push(key)
-        this._handleDataDependency(root_formData, formData[key], schema.properties[key], _pathArr);
+        let _pathArr = pathArr.slice();
+        _pathArr.push(key);
+        this._handleDataDependency(
+          root_formData,
+          formData[key],
+          schema.properties[key],
+          _pathArr
+        );
       }
-    } else if (schema.type == 'array') {
+    } else if (schema.type == "array") {
       //do nothing
     } else {
       if (schema.dependency != null) {
-        formData = this.__parseDependencyData(root_formData, schema.dependency, pathArr);
+        formData = this.__parseDependencyData(
+          root_formData,
+          schema.dependency,
+          pathArr
+        );
       }
     }
     return formData;
   }
 
   _handleSchemaRelation(formData) {
-    const { originalSchema, schema } = this.state
-    let newSchema = processRely(schema, formData, originalSchema)
+    const { originalSchema, schema } = this.state;
+    let newSchema = processRely(schema, formData, originalSchema);
     // 这里要不这么写是不是也行？
     setTimeout(() => {
       // 这里联动有问题
-      this.setState({ schema: newSchema })
+      this.setState({ schema: newSchema });
     });
   }
 
   _onChange = (oformData, options = { validate: false }) => {
-    let formData = _.cloneDeep(oformData)
+    let formData = _.cloneDeep(oformData);
     this._handleDataDependency(formData, formData, this.state.schema);
-    this._handleSchemaRelation(formData) // 还是要直接返回schema吧
+    this._handleSchemaRelation(formData); // 还是要直接返回schema吧
     // 这个地方可以更改下 onChange考虑可不可以不回调
     if (this.props.onChange) {
       this.props.onChange(formData);
@@ -232,33 +237,40 @@ class _Form extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const { errors, errorSchema } = this.validate(this.state.formData, this.props.schema, this.state.idSchema);
-
-    let _errors = errors
-    let _errorSchema = errorSchema
-    this.setState({
-      errors: errors,
-      errorSchema: errorSchema
-    }, () => {
-      if (Object.keys(_errors).length == 0) {
-        const { schema, formData } = this.state
-        formatAmountValue(schema, formData)
-        console.log('formData', formData)
-        // return
-        this.props.onSubmit && this.props.onSubmit(formData, (data) => {
-          // console.log('callback', data)
-          // 设置后台返回的errorMsg
-          const { formError } = data
-          this.setState({
-            errorSchema: formError
-          })
-        })
-      } else {
-        console.log('formData', this.state.formData);
-        console.error('errorSchema', _errorSchema)
-        console.error('errors', _errors)
+    const { errors, errorSchema } = this.validate(
+      this.state.formData,
+      this.props.schema,
+      this.state.idSchema
+    );
+    let _errors = errors;
+    let _errorSchema = errorSchema;
+    this.setState(
+      {
+        errors: errors,
+        errorSchema: errorSchema
+      },
+      () => {
+        if (Object.keys(_errors).length == 0) {
+          const { schema, formData } = this.state;
+          formatAmountValue(schema, formData);
+          console.log("formData", formData);
+          // return
+          this.props.onSubmit &&
+            this.props.onSubmit(formData, data => {
+              // console.log('callback', data)
+              // 设置后台返回的errorMsg
+              const { formError } = data;
+              this.setState({
+                errorSchema: formError
+              })
+            });
+        } else {
+          console.log("formData", this.state.formData);
+          console.error("errorSchema", _errorSchema);
+          console.error("errors", _errors);
+        }
       }
-    })
+    );
   };
 
   getRegistry() {
@@ -292,19 +304,19 @@ class _Form extends Component {
       noHtml5Validate
     } = this.props;
     const { schema, uiSchema, formData, errorSchema, idSchema } = this.state;
-    if (!schema) return <div />
+    if (!schema) return <div />;
     // let titleFormat = "object"
     // if (uiSchema["ui:titleFormat"]) {
     //   titleFormat = uiSchema["ui:titleFormat"]
     // }
     const registry = this.getRegistry();
     const _SchemaField = registry.fields.SchemaField;
-    registry.formContext.myFormFun = this.props.form
+    registry.formContext.myFormFun = this.props.form;
     // if(schema.notAntdFormTrusteeship) {
     //   // 取消 AntdForm 托管
     //   registry.formContext.notAntdFormTrusteeship = schema.notAntdFormTrusteeship
     // }
-    let title = schema.title
+    let title = schema.title;
     // let _schema = Object.assign({}, schema)
     // if (titleFormat != "object") {
     //   delete _schema.title
@@ -319,7 +331,7 @@ class _Form extends Component {
           )
         } */}
         <Form
-          ref={this.props.ref || ''}
+          ref={this.props.ref || ""}
           className={className ? className : "antd-form"}
           id={id}
           name={name}
@@ -349,13 +361,12 @@ class _Form extends Component {
           {children ? (
             children
           ) : (
-              <div className="antd-form-sub-btn">
-                <Button
-                  htmlType="submit"
-                  type="primary"
-                >提交</Button>
-              </div>
-            )}
+            <div className="antd-form-sub-btn">
+              <Button htmlType="submit" type="primary">
+                提交
+              </Button>
+            </div>
+          )}
         </Form>
       </div>
     );
@@ -363,7 +374,7 @@ class _Form extends Component {
 }
 
 const WrappedHorizontalLoginForm = Form.create()(_Form);
-export default WrappedHorizontalLoginForm
+export default WrappedHorizontalLoginForm;
 
 if (process.env.NODE_ENV !== "production") {
   Form.propTypes = {
@@ -396,9 +407,6 @@ if (process.env.NODE_ENV !== "production") {
     validate: PropTypes.func,
     transformErrors: PropTypes.func,
     safeRenderCompletion: PropTypes.bool,
-    formContext: PropTypes.object,
+    formContext: PropTypes.object
   };
 }
-
-
-
