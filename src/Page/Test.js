@@ -127,8 +127,8 @@ export default class Test extends Component {
             <Radio value={1}>default</Radio>
             <Radio value={2}>Array</Radio>
             <Radio value={3}>Relative</Radio>
-            <Radio value={4}>Error</Radio>
             <Radio value={5}>AsyncError</Radio>
+            <Radio value={4}>Error</Radio>
             <Radio value={6}>TabsLayout</Radio>
             <Radio value={7}>Modal</Radio>
           </RadioGroup>
