@@ -38,7 +38,7 @@ const SCHEMA = {
 export default class Test extends Component {
   constructor(props) {
     super(props);
-    const value = 4;
+    const value = 1;
     const schema = SCHEMA[value];
     this.state = {
       schema: schema,

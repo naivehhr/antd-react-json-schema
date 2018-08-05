@@ -6,6 +6,17 @@ const defaultSchema = {
   // required: ["name"],
   properties: {
     dd: {},
+    // name11: {
+    //   type: "object",
+    //   title: "姓名11",
+    //   layout: "WholeSchemaLayout",
+    //   properties: {
+    //     age1: {
+    //       type: "string",
+    //       title: "年龄2"
+    //     }
+    //   }
+    // },
     name: {
       type: "string",
       title: "姓名"
