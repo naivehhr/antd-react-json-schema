@@ -13,3 +13,4 @@ gerrit
 .history
 /nohup.out
 .vscode
+mac/*
