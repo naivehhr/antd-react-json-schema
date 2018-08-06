@@ -5,15 +5,15 @@
  * @Last Modified time: 2017-11-14 17:11:03
  */
 
-import React, { Component } from "react";
-import { getCreactCustomerSchema, addCustomer } from "Ajax";
-import CreateComponent from "Component/CreateComponent";
-import Container from "Page/Container";
-import ReactJsonForm from "ReactJsonSchema";
-import { makeTreeDataBase, processRely } from "../Util";
-import { message, Form, Radio } from "antd";
-import _ from "lodash";
-import ReactJson from "react-json-view";
+import React, { Component } from "react"
+import { getCreactCustomerSchema, addCustomer } from "Ajax"
+import CreateComponent from "Component/CreateComponent"
+import Container from "Page/Container"
+import ReactJsonForm from "ReactJsonSchema"
+import { makeTreeDataBase, processRely } from "../Util"
+import { message, Form, Radio } from "antd"
+import _ from "lodash"
+import ReactJson from "react-json-view"
 
 import {
   defaultSchema,
@@ -23,8 +23,8 @@ import {
   asyncErrorSchema,
   tabsLayoutSchema,
   modalsSchema
-} from "./SchemaConfig";
-const RadioGroup = Radio.Group;
+} from "./SchemaConfig"
+const RadioGroup = Radio.Group
 
 const SCHEMA = {
   1: defaultSchema,
@@ -34,41 +34,41 @@ const SCHEMA = {
   5: asyncErrorSchema,
   6: tabsLayoutSchema,
   7: modalsSchema
-};
+}
 export default class Test extends Component {
   constructor(props) {
-    super(props);
-    const value = 1;
-    const schema = SCHEMA[value];
+    super(props)
+    const value = 1
+    const schema = SCHEMA[value]
     this.state = {
       schema: schema,
       formData: schema.formData,
       uiSchema: {},
       value
-    };
+    }
   }
 
   componentWillUpdate(nextProps, nextState) {
-    processRely(nextState);
+    processRely(nextState)
   }
 
   componentDidMount() {
-    const { schema } = this.state;
-    let treeData = makeTreeDataBase(schema);
-    _.set(schema, "definitions.treeData.treeData", treeData);
-    this.setState({ schema });
+    const { schema } = this.state
+    let treeData = makeTreeDataBase(schema)
+    _.set(schema, "definitions.treeData.treeData", treeData)
+    this.setState({ schema })
   }
 
   onChange = (e, id) => {
     this.setState({
       formData: e,
       relativeFormData: e
-    });
-  };
+    })
+  }
 
   makeIdStrById = idArr => {
-    return `properties.${idArr.join(".properties.")}`;
-  };
+    return `properties.${idArr.join(".properties.")}`
+  }
 
   onSubmit = (e, callback) => {
     // console.log("submit", callback);
@@ -88,28 +88,31 @@ export default class Test extends Component {
           __errors: [{ pkq: "我不叫皮卡丘" }]
         }
       }
-    };
-    let data = { formError };
-    callback(data);
-  };
+    }
+    let data = { formError }
+    callback(data)
+  }
 
   onSelect = data => {
-    console.log("123", data);
-  };
+    console.log("123", data)
+  }
 
-  handleChange = ({ updated_src }) => this.setState({ schema: updated_src });
+  handleChange = ({ updated_src }) => this.setState({ schema: updated_src })
+
+  handleFormDataChange = ({ updated_src }) =>
+    this.setState({ formData: updated_src })
 
   handleRadioChange = e => {
-    const { value } = e.target;
+    const { value } = e.target
     this.setState({
       schema: SCHEMA[value],
       formData: SCHEMA[value].formData,
       value
-    });
-  };
+    })
+  }
 
   render() {
-    const { formData, schema } = this.state;
+    const { formData, schema } = this.state
     return (
       <Container>
         <div
@@ -167,9 +170,9 @@ export default class Test extends Component {
               src={formData}
               theme="bright:inverted"
               displayDataTypes={false}
-              onEdit={this.handleChange}
-              onAdd={this.handleChange}
-              onDelete={this.handleChange}
+              onEdit={this.handleFormDataChange}
+              onAdd={this.handleFormDataChange}
+              onDelete={this.handleFormDataChange}
             />
           </div>
           <div>
@@ -184,6 +187,6 @@ export default class Test extends Component {
           </div>
         </div>
       </Container>
-    );
+    )
   }
 }
